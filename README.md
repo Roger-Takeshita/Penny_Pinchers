@@ -1,68 +1,167 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 id='summar'>Summary</h1>
 
-## Available Scripts
+* [Installation](#installation)
 
-In the project directory, you can run:
+<h1 id='installation'>Installation</h1>
 
-### `npm start`
+[Go Back to Summary](#summary)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Create React Front-End
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+  * `npx create-react-app pennypincher`
 
-### `npm test`
+* Start the Server 3000
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  * `npm start`
 
-### `npm run build`
+* Install all server side dependencies
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  * `npm i express morgan serve-favicon mongoose dotenv`
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+* Create server
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  * `touch server.js`
 
-### `npm run eject`
+* Create Procfile
+  
+  * `touch Procfile` (named exactly without a file extension)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* Create dotenv file
+  * `touch src/.env`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* In the end your project file will look like this:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    ```Bash
+        .
+        ├── node_modules
+        ├── public
+        │   ├── faicon.ico
+        │   ├── index.html
+        │   ├── logo192.png
+        │   ├── logo512.png
+        │   ├── manifest.json
+        │   └── robots.txt
+        ├── src
+        │   ├── .env
+        │   ├── App.css
+        │   ├── App.js
+        │   ├── App.test.js
+        │   ├── index.css
+        │   ├── index.js
+        │   ├── logo.svg
+        │   ├── serviceWorker.js
+        │   └── setupTests.js
+        ├── package-lock.json
+        ├── package.json
+        ├── Procfile
+        └── server.js
+    ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<h1 id='reactserver'>React Front-End & Express Back-End</h1>
 
-## Learn More
+<h2 id='configserver'>Config <Strong>Server.js</Strong></h2>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[Go Back to Summary](#summary)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* In `server.js`
 
-### Code Splitting
+    ```JavaScript
+        const express = require('express');
+        const path = require('path');                                       //! Used to figure out where I am going to serve my html from
+        const favicon = require('serve-favicon');                           //! Just the website icon
+        const logger = require('morgan');                                   //! Morgan is used for logging request details
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+        const app = express();                                                  //+ Create express app
 
-### Analyzing the Bundle Size
+        //! Middleware
+        app.use(logger('dev'));                                                 //+ Mount my loggger middleware       
+        app.use(express.json());                                                //+ Mount my json midleware - to response as JSON requests
+                                                                                    //- For React back-end, we dont need method-override because we don't have any forms to submit
+        app.set('view engine', 'ejs');                                          //+ Use .ejs as the default view engine
+        //! Configure both serve-favicon & static middlewares to serve from the production 'build' folder
+        app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
+        app.use(express.static(path.join(__dirname, 'build')));                 //+ looking for static assets, we are going to look into this folder (html file, css, image)
+                                                                                    //- static files don't have any logic
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+        //! API Routes -  Put them before the "catch all" route - The following "catch all" route (note the *)is necessary for a SPA's client-side routing to properly work
+        app.get('/*', function(req, res) {
+            res.sendFile(path.join(__dirname, 'build', 'index.html'));
+        });
+        
+        //! Configure to use port 3001 instead of 3000 during development to avoid collision with React's dev server
+        const port = process.env.PORT || 3001;
+        app.listen(port, function() {
+        console.log(`Express app running on port ${port}`)
+        });
+    ```
 
-### Making a Progressive Web App
+<h2 id='configreact'>Configure REACT for Full-Stack Development</h2>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+[Go Back to Summary](#summary)
 
-### Advanced Configuration
+* In `package.json`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+  * Add a `proxy` key to handle the port conflit **during the development** (not production). Because the REACT app is being server from `localhost:3000`, that's where all AJAX calls made from the browser to the the server.
+  * For example, our REACT app might make a fetch request like `GET /api/products`. And that path is automatically appended to the domain of origin(`localhost:3000`).
+  * However, our Express server is listening for AJAX calls at `localhost:3001`.
+  * The React development server allows us to configure a `proxy` which specifies the host to send API/AJAX calls to.
 
-### Deployment
+    ```JavaScript
+        "proxy": "http://localhost:3001"
+    ```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+  * Now **during development**, the SPA can make AJAX calls to the server, such as `fetch('/api/products')`, and they will send to `localhost:3001` insteado of `localhost:3000`
 
-### `npm run build` fails to minify
+<h1 id='deployingheroku'>Deploying to Heroku</h1>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[Go Back to Summary](#summary)
+
+* Run React Front-End (`localhost:3000`) and Express Back-End (`localhost:3001`)
+
+    ```Bash
+        nodemon                 # Run our front-end at port 3000
+        nodemon server.js       # Run our back-end  at port 3001
+    ```
+
+<h2 id='procfile'>Procfile</h2>
+
+[Go Back to Summary](#summary)
+
+* Add a `Procfile`
+  * After the coe has been uploaded using `git push heroku master`, Heroku checks to see if the project has a **Procfile** which specifies how to start up the application.
+  * If **no** Procfile exists, Heroku will run the command assigned to the `start` script in `package.json`. We have a `start` script but it's configures to start React's dev server instead of `node server.js`.
+
+* Create Procfile `touch Procfile`
+* In `Procfile` add:
+
+```Bash
+    web: node server.js
+```
+
+<h2 id='createheroku'>Create the App in Your Heroku Account</h2>
+
+[Go Back to Summary](#summary)
+
+* Now let's use the Heroku CLI to create the project in your Heroku dashboard:
+
+    ```Bash
+        heroku create <optional_preferred_subdomain>
+    ```
+
+* The above command also creates a git remote named heroku that we push to in order to deploy.
+
+* Now you are set to deploy to Heroku:
+
+  1. Make a commit (if you haven't already): `git add -A && git commit -m "Deploy"`
+  2. Push to Heroku: `git push heroku master`
+
+<h2 id='herokuvariables'>Set the Environment Variables on Heroku</h2>
+
+[Go Back to Summary](#summary)
+
+* The last step is to ensure that every KEY=VALUE pair in the `.env` file is set in the Heroku project.
+* No different than with the two previous projects deployed to Heroku. For each KEY=VALUE:
+
+    ```Bash
+        heroku config:set KEY=VALUE
+    ```
