@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');                                       //! Used to figure out where I am going to serve my html from
 const favicon = require('serve-favicon');                           //! Just the website icon
 const logger = require('morgan');                                   //! Morgan is used for logging request details
+require('dotenv').config();                                         //! Require dotenv module before the database, we need the dotenv path to load our database
+require('./config/database');                                       //! Require the database
 
 const app = express();                                                  //+ Create express app
 
@@ -10,6 +12,7 @@ app.use(logger('dev'));                                                 //+ Moun
 app.use(express.json());                                                //+ Mount my json midleware - to response as JSON requests
                                                                             //- For React back-end, we dont need method-override because we don't have any forms to submit
 app.set('view engine', 'ejs');                                          //+ Use .ejs as the default view engine
+
 //! Configure both serve-favicon & static middlewares to serve from the production 'build' folder
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));                 //+ looking for static assets, we are going to look into this folder (html file, css, image)
