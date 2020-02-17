@@ -5,7 +5,7 @@ const SALT_ROUNDS = 6;                      //! bcrypt has a setting that tells 
 
 const userSchema = new Schema(
     {
-        fistName: {
+        firstName: {
             type: String,
             required: true
         },
@@ -29,7 +29,7 @@ const userSchema = new Schema(
         googleId: {
             type: String
         },
-        admn: {
+        admin: {
             type: Boolean,
             default: false
         },
@@ -48,6 +48,23 @@ const userSchema = new Schema(
             user.password = hash;                                               //- replace the user provided password with the hased password
             next();                                                             //- I need to call the next() function
         });
+    });
+
+//! bcrypt includes a compare method for verifying that a cleartext password matches a given hash.
+    userSchema.methods.comparePassword = function(tryPassword, cb) {
+        bcrypt.compare(tryPassword, this.password, cb);
+    };
+
+//! Remove the password property when serializing doc to JSON
+    userSchema.set('toJSON', {
+        transform: function(doc, ret) {
+            delete ret.password;
+            delete ret.createdAt;
+            delete ret.updatedAt;
+            delete ret._id;
+            delete ret.admin;
+            return ret;
+        }
     });
 
 module.exports = mongoose.model('User', userSchema);
