@@ -1,0 +1,11 @@
+.NavBarLink:hover {
+    background-color: rgba(0,0,0,.05);
+}
+
+.NavBar1 {
+    justify-content: space-between;
+}
+
+.NavBar2 {
+    flex-grow: 0;
+}
