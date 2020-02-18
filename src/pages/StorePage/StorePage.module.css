@@ -1,0 +1,39 @@
+.StorePageFormDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.StorePageForm {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 500px;
+}
+
+.buttonValid {
+    color: green;
+}
+
+.buttonValid:hover {
+    text-underline-position: below;
+    color: green;
+}
+
+.buttonInvalid {
+    color: red;
+}
+
+.buttonInvalid:hover {
+    text-underline-position: below;
+    color: red;
+}
+
+.buttonCancel {
+    text-decoration: none;
+    color: red;
+}
+
+.buttonCancel:hover {
+    text-underline-position: below;
+    color: red;
+}

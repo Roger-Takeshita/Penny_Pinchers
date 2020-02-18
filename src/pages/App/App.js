@@ -11,7 +11,6 @@ import StorePage from '../../pages/StorePage/StorePage';
 import ProductPage from '../../pages/ProductPage/ProductPage';
 import CategoryOnePage from '../../pages/CategoryOnePage/CategoryOnePage';
 import CategoryTwoPage from '../../pages/CategoryTwoPage/CategoryTwoPage';
-import CategoryThreePage from '../../pages/CategoryThreePage/CategoryThreePage';
 import AboutPage from '../../pages/AboutPage/AboutPage';
 import ListsPage from '../../pages/ListsPage/ListsPage';
 import NewListPage from '../../pages/NewListPage/NewListPage';
@@ -58,9 +57,6 @@ class App extends Component {
                 )} />
                 <Route exact path="/categorytwo" render={({ history }) => (
                     <CategoryTwoPage history={history} user={this.state.user}/>
-                )} />
-                <Route exact path="/categorythree" render={({ history }) => (
-                    <CategoryThreePage history={history} user={this.state.user}/>
                 )} />
                 <Route exact path="/lists" render={({ history }) => (
                     <ListsPage history={history} user={this.state.user}/>
@@ -110,6 +106,11 @@ class App extends Component {
                         )} />
                     </Switch> */}
                 </main>
+                <footer>
+                  <div>
+                    <p><a href="https://github.com/roger-takeshita" target="blank"><span>Developed by</span>&nbsp;Roger Takeshita&nbsp;<img src="/github.png" alt="github" /></a></p>
+                  </div>
+                </footer>
             </div>
         );
     }

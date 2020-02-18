@@ -57,7 +57,7 @@ class LoginPage extends Component {
                             <Link to='/signup'>Sign Up</Link>
                         </div>
                     </div>
-                    <p>{this.state.message}</p>
+                    <p className={styles.LoginFormText}>{this.state.message}</p>
                 </form>
             </div>
         );

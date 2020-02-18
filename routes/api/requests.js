@@ -1,12 +1,16 @@
 const express = require('express');                     //! Require Express
 const router = express.Router();                        //! Shorthand for router
-const listsCtrl = require('../../controllers/lists');   //! Require Lists Controllers
+const listCtrl = require('../../controllers/lists');   //! Require Lists Controllers
+const storeCtrl = require('../../controllers/stores');
 
 //! Public routes
 
 //! Private routes
     router.use(require('../../config/auth'));
-    router.post('/', checkAuth, listsCtrl.myLists);
+    router.get('/mylists/', checkAuth, listCtrl.myLists);
+    router.get('/mystores/', checkAuth, storeCtrl.myStores);
+    router.post('/newstore', checkAuth, storeCtrl.newStore);
+    router.delete('/deletestore/:id', checkAuth, storeCtrl.deleteStore);
 
 
 //! Helper functions

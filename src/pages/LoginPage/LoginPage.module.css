@@ -6,3 +6,8 @@
     margin-bottom: 50px;
     padding-top: 50px;
 }
+
+.LoginFormText {
+    text-align: center;
+    color: red;
+}

@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
-import apiService from '../../utils/apiService';
+import { Link } from 'react-router-dom';
 
 class HomePage extends Component {
-    state = {
-        data: null
-    }
-
-    async componentDidMount() {
-        const data = await apiService.getMyLists(this.props.user);
-        this.setState({data: data})
-        console.log(data)
-    }
-
     render () {
         return (
             <div>
-                Lists:
+                <div className="container text-center ">
+                    <p>Home Page</p>
+                    <Link to="/lists"><img src="/blank_page.png" alt="blank" /></Link>
+                </div>
             </div>
         );
     };
