@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import styles from '../LoginPage/LoginPage.module.css';
+import styles from './LoginPage.module.css';
 import userService from '../../utils/userService';
 
 class LoginPage extends Component {
@@ -49,7 +49,7 @@ class LoginPage extends Component {
                     <div className="form-group">
                         <div className="col-sm-12 text-center">
                             <button className="btn btn-default">Log In</button>&nbsp;&nbsp;&nbsp;
-                            <Link to='/'>Cancel</Link>
+                            <Link to='/signup'>Cancel</Link>
                         </div>
                     </div>
                     <p>{this.state.message}</p>

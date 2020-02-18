@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import FormControl from 'react-bootstrap/FormControl';
-import styles from '../NavBar/NavBar.module.css';
+import styles from './NavBar.module.css';
 
 const NavBar = (props) => {
     let form = props.user ?

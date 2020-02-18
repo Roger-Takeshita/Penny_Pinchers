@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import SignupPage from '../../pages/SingupPage/SignupPage';
 import LoginPage from '../../pages/LoginPage/LoginPage';
+import HomePage from '../../pages/HomePage/HomePage';
 import userService from '../../utils/userService';
 
 class App extends Component {
@@ -30,7 +31,13 @@ class App extends Component {
                 <NavBar user={this.state.user} handleLogout={this.handleLogout} />
                 <main>
                     <Switch>
-                        <Route exact path="/signup"render={({ history }) => (
+                        <Route exact path="/" render={({ history }) => (
+                            userService.getUser() ? 
+                            (<HomePage history={history} user={this.state.user}/>)
+                            :
+                            (<Redirect history={history} to="/login" />)
+                        )} />
+                        <Route exact path="/signup" render={({ history }) => (
                             <SignupPage history={history} handleSignupOrLogin={this.handleSignupOrLogin} />
                         )} />
                         <Route exact path="/login" render={({ history }) => (

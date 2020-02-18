@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname, 'build')));                 //+ look
                                                                             //- static files don't have any logic
 //! Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/mylists', require('./routes/api/lists'));
 
 //! API Routes -  Put them before the "catch all" route - The following "catch all" route (note the *)is necessary for a SPA's client-side routing to properly work
 app.get('/*', function(req, res) {
