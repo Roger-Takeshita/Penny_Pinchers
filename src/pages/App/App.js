@@ -9,8 +9,8 @@ import HomePage from '../../pages/HomePage/HomePage';
 import ProfilePage from '../../pages/ProfilePage/ProfilePage';
 import StorePage from '../../pages/StorePage/StorePage';
 import ProductPage from '../../pages/ProductPage/ProductPage';
-import CategoryOnePage from '../../pages/CategoryOnePage/CategoryOnePage';
-import CategoryTwoPage from '../../pages/CategoryTwoPage/CategoryTwoPage';
+import CategoryPage from '../CategoryPage/CategoryPage';
+import SubCategoryPage from '../SubCategoryPage/CategorySubPage';
 import AboutPage from '../../pages/AboutPage/AboutPage';
 import ListsPage from '../../pages/ListsPage/ListsPage';
 import NewListPage from '../../pages/NewListPage/NewListPage';
@@ -52,11 +52,11 @@ class App extends Component {
                 <Route exact path="/products" render={({ history }) => (
                     <ProductPage history={history} user={this.state.user}/>
                 )} />
-                <Route exact path="/categoryone" render={({ history }) => (
-                    <CategoryOnePage history={history} user={this.state.user}/>
+                <Route exact path="/category" render={({ history }) => (
+                    <CategoryPage history={history} user={this.state.user}/>
                 )} />
-                <Route exact path="/categorytwo" render={({ history }) => (
-                    <CategoryTwoPage history={history} user={this.state.user}/>
+                <Route exact path="/subcategory" render={({ history }) => (
+                    <SubCategoryPage history={history} user={this.state.user}/>
                 )} />
                 <Route exact path="/lists" render={({ history }) => (
                     <ListsPage history={history} user={this.state.user}/>

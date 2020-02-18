@@ -21,8 +21,8 @@ const NavBar = (props) => {
                     <NavDropdown.Item><Link className="nav-link" to="/profile">Profile</Link></NavDropdown.Item>
                     <NavDropdown.Item><Link className="nav-link" to="/stores">Stores</Link></NavDropdown.Item>
                     <NavDropdown.Item><Link className="nav-link" to="/products">Products</Link></NavDropdown.Item>
-                    <NavDropdown.Item><Link className="nav-link" to="/categoryone">Category</Link></NavDropdown.Item>
-                    <NavDropdown.Item><Link className="nav-link" to="/categorytwo">Sub-Category</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link className="nav-link" to="/category">Category</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link className="nav-link" to="/subcategory">Sub-Category</Link></NavDropdown.Item>
                     <NavDropdown.Item><Link className="nav-link" to="/about">About</Link></NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item className={`${styles.NavBarLink}`} onClick={props.handleLogout}>Log Out</NavDropdown.Item>

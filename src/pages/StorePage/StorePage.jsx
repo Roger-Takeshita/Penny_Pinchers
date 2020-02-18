@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './StorePage.module.css';
 import apiService from '../../utils/apiService';
-import ResultsStore from '../../components/ResultsStore/ResultsStore';
+import ResultsStoreCategory from '../../components/ResultsStoreCategory/ResultsStoreCategory';
 
 class StorePage extends Component {
     state = {
@@ -62,7 +62,7 @@ class StorePage extends Component {
                 </form>
             </div>
             <div><p>{this.state.message}</p></div>
-            <ResultsStore stores={this.state.data} handleDelete={this.handleDelete} />
+            <ResultsStoreCategory description='Store' redirect='/stores' data={this.state.data} handleDelete={this.handleDelete} />
             </>
         );
     };
