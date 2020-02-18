@@ -16,14 +16,15 @@ const NavBar = (props) => {
         <Navbar.Collapse id="basic-navbar-nav" className={styles.NavBar2}>
             <Nav className="mr-auto">
                 <Nav.Link href="#link"><Link className={`${styles.NavBarLink} nav-link`} to="/lists">Lists</Link></Nav.Link>
-                <Nav.Link href="#link"><Link className={`${styles.NavBarLink} nav-link`} to="/new">New List</Link></Nav.Link>
+                <Nav.Link href="#link"><Link className={`${styles.NavBarLink} nav-link`} to="/newlist">New List</Link></Nav.Link>
                 <NavDropdown className={`${styles.NavBarLink} nav-link`} title={props.user.firstName.charAt(0).toUpperCase() + props.user.firstName.slice(1) + " " + props.user.lastName.charAt(0).toUpperCase() + props.user.lastName.slice(1)} id="basic-nav-dropdown">
-                    <NavDropdown.Item><Link className="nav-link" to="/">Profile</Link></NavDropdown.Item>
-                    <NavDropdown.Item><Link className="nav-link" to="/">Stores</Link></NavDropdown.Item>
-                    <NavDropdown.Item><Link className="nav-link" to="/">Products</Link></NavDropdown.Item>
-                    <NavDropdown.Item><Link className="nav-link" to="/">Category One</Link></NavDropdown.Item>
-                    <NavDropdown.Item><Link className="nav-link" to="/">Category Two</Link></NavDropdown.Item>
-                    <NavDropdown.Item><Link className="nav-link" to="/">Category Three</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link className="nav-link" to="/profile">Profile</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link className="nav-link" to="/stores">Stores</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link className="nav-link" to="/products">Products</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link className="nav-link" to="/categoryone">Category One</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link className="nav-link" to="/categorytwo">Category Two</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link className="nav-link" to="/categorythree">Category Three</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link className="nav-link" to="/about">About</Link></NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item className={`${styles.NavBarLink}`} onClick={props.handleLogout}>Log Out</NavDropdown.Item>
                 </NavDropdown>
@@ -34,6 +35,7 @@ const NavBar = (props) => {
             <Nav className="mr-auto">
                 <Link className={`${styles.NavBarLink} nav-link`} to="/login">Log In</Link>
                 <Link className={`${styles.NavBarLink} nav-link`} to="/signup">Sign Up</Link>
+                <Link className={`${styles.NavBarLink} nav-link`} to="/about">About</Link>
             </Nav>
         </Navbar.Collapse>;
     

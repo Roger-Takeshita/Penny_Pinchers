@@ -49,7 +49,12 @@ class LoginPage extends Component {
                     <div className="form-group">
                         <div className="col-sm-12 text-center">
                             <button className="btn btn-default">Log In</button>&nbsp;&nbsp;&nbsp;
-                            <Link to='/signup'>Cancel</Link>
+                            <Link to='/'>Cancel</Link>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <div className="col-sm-12 text-center">
+                            <Link to='/signup'>Sign Up</Link>
                         </div>
                     </div>
                     <p>{this.state.message}</p>

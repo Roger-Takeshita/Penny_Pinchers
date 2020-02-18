@@ -72,6 +72,11 @@ class SignupForm extends Component {
                             <Link to='/'>Cancel</Link>
                         </div>
                     </div>
+                    <div className="form-group">
+                        <div className="col-sm-12 text-center">
+                            <Link to='/login'>Log In</Link>
+                        </div>
+                    </div>
                 </form>
             </div>
         );
