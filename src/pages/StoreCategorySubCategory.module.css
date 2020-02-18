@@ -1,10 +1,10 @@
-.StorePageFormDiv {
+.StoreCategorySubCategoryPageFormDiv {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.StorePageForm {
+.StoreCategorySubCategoryPageForm {
     padding-top: 30px;
     padding-bottom: 30px;
     width: 500px;

@@ -11,7 +11,7 @@ function getMyLists () {
     return fetch('/api/mylists', options).then(res => res.json());
 }
 
-function getMyStores () {
+function getStoresCategoriesSubCategories (apiPath) {
     const options = {
         method: 'GET',
         headers: {
@@ -19,22 +19,22 @@ function getMyStores () {
             'Authorization': 'Bearer ' + tokenService.getToken()
         }
     };
-    return fetch('/api/mystores', options).then(res => res.json());
+    return fetch(apiPath, options).then(res => res.json());
 }
 
-function newStore (storeName) {
+function newStoreCategorySubCategory (name, apiPath) {
     const options = {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
             'Authorization': 'Bearer ' + tokenService.getToken()
         },
-        body: JSON.stringify(storeName)
+        body: JSON.stringify(name)
     };
-    return fetch('/api/newstore', options).then(res => res.json());
+    return fetch(apiPath, options).then(res => res.json());
 }
 
-function deleteStore (id) {
+function deleteStoreCategorySubCategory (apiPath) {
     const options = {
         method: 'DELETE',
         headers: {
@@ -42,12 +42,47 @@ function deleteStore (id) {
             'Authorization': 'Bearer ' + tokenService.getToken()
         }
     };
-    return fetch(`/api/deletestore/${id}`, options).then(res => res.json());
+    return fetch(apiPath, options).then(res => res.json());
 }
+
+//! ----------------------------- Stores
+// function getMyStores () {
+//     const options = {
+//         method: 'GET',
+//         headers: {
+//             'Content-type': 'application/json',
+//             'Authorization': 'Bearer ' + tokenService.getToken()
+//         }
+//     };
+//     return fetch('/api/mystores', options).then(res => res.json());
+// }
+
+// function newStore (storeName) {
+//     const options = {
+//         method: 'POST',
+//         headers: {
+//             'Content-type': 'application/json',
+//             'Authorization': 'Bearer ' + tokenService.getToken()
+//         },
+//         body: JSON.stringify(storeName)
+//     };
+//     return fetch('/api/newstore', options).then(res => res.json());
+// }
+
+// function deleteStore (id) {
+//     const options = {
+//         method: 'DELETE',
+//         headers: {
+//             'Content-type': 'application/json',
+//             'Authorization': 'Bearer ' + tokenService.getToken()
+//         }
+//     };
+//     return fetch(`/api/deletestore/${id}`, options).then(res => res.json());
+// }
 
 export default {
     getMyLists,
-    getMyStores,
-    newStore,
-    deleteStore,
+    getStoresCategoriesSubCategories,
+    newStoreCategorySubCategory,
+    deleteStoreCategorySubCategory,
 };

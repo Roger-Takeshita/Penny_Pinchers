@@ -10,7 +10,7 @@ import ProfilePage from '../../pages/ProfilePage/ProfilePage';
 import StorePage from '../../pages/StorePage/StorePage';
 import ProductPage from '../../pages/ProductPage/ProductPage';
 import CategoryPage from '../CategoryPage/CategoryPage';
-import SubCategoryPage from '../SubCategoryPage/CategorySubPage';
+import SubCategoryPage from '../SubCategoryPage/SubCategoryPage';
 import AboutPage from '../../pages/AboutPage/AboutPage';
 import ListsPage from '../../pages/ListsPage/ListsPage';
 import NewListPage from '../../pages/NewListPage/NewListPage';
@@ -52,10 +52,10 @@ class App extends Component {
                 <Route exact path="/products" render={({ history }) => (
                     <ProductPage history={history} user={this.state.user}/>
                 )} />
-                <Route exact path="/category" render={({ history }) => (
+                <Route exact path="/categories" render={({ history }) => (
                     <CategoryPage history={history} user={this.state.user}/>
                 )} />
-                <Route exact path="/subcategory" render={({ history }) => (
+                <Route exact path="/subcategories" render={({ history }) => (
                     <SubCategoryPage history={history} user={this.state.user}/>
                 )} />
                 <Route exact path="/lists" render={({ history }) => (

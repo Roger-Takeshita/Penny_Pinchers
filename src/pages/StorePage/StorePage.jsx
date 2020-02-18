@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './StorePage.module.css';
+import styles from '../StoreCategorySubCategory.module.css';
 import apiService from '../../utils/apiService';
 import ResultsStoreCategory from '../../components/ResultsStoreCategory/ResultsStoreCategory';
 
@@ -12,7 +12,7 @@ class StorePage extends Component {
     }
 
     async componentDidMount() {
-        const data = await apiService.getMyStores(this.props.user);
+        const data = await apiService.getStoresCategoriesSubCategories('/api/stores');
         this.setState({data})
     }
 
@@ -26,7 +26,7 @@ class StorePage extends Component {
     handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        const data = await apiService.newStore({storeName: this.state.name});
+        const data = await apiService.newStoreCategorySubCategory({storeName: this.state.name}, 'api/newstore');
         this.props.history.push('/stores');
         this.setState({name: '', data})
       } catch (err) {
@@ -36,7 +36,7 @@ class StorePage extends Component {
 
     handleDelete = async (id) => {
         try {
-            const data = await apiService.deleteStore(id)
+            const data = await apiService.deleteStoreCategorySubCategory(`/api/deletestore/${id}`)
             this.props.history.push('/stores');
             this.setState({name: '', data})
         } catch (err) {
@@ -51,18 +51,18 @@ class StorePage extends Component {
     render () {
         return (
             <>
-            <div className={styles.StorePageFormDiv}>
-                <form className={styles.StorePageForm} onSubmit={this.handleSubmit}>
+            <div className={styles.StoreCategorySubCategoryPageFormDiv}>
+                <form className={styles.StoreCategorySubCategoryPageForm} onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="descriptionInput">Store's Name</label>
-                        <input type="text" className="form-control" value={this.state.name} name="name" onChange={this.handleChange} id="descriptionInput" placeholder=""/>
+                        <input className="form-control" value={this.state.name} name="name" onChange={this.handleChange} id="descriptionInput" placeholder=""/>
                         <button className={this.isFormInvalid() ? `${styles.buttonInvalid} btn btn-default` : `${styles.buttonValid} btn btn-default`} disabled={this.isFormInvalid()}>Submit</button>&nbsp;&nbsp;&nbsp;
-                        <Link to='/stores' className={styles.buttonCancel}>Cancel</Link>
+                        <Link to='/stores' className='buttonCancel' onClick={() => this.setState({name: ''})}>Cancel</Link>
                     </div>
                 </form>
             </div>
             <div><p>{this.state.message}</p></div>
-            <ResultsStoreCategory description='Store' redirect='/stores' data={this.state.data} handleDelete={this.handleDelete} />
+            <ResultsStoreCategory description1='Store' description2='Stores' redirect='/stores' data={this.state.data} handleDelete={this.handleDelete} />
             </>
         );
     };

@@ -6,11 +6,11 @@ class ListsPage extends Component {
         data: null
     }
 
-    async componentDidMount() {
-        const data = await apiService.getMyLists(this.props.user);
-        this.setState({data: data})
-        console.log(data)
-    }
+    // async componentDidMount() {
+    //     const data = await apiService.getMyLists(this.props.user);
+    //     this.setState({data: data})
+    //     console.log(data)
+    // }
 
     render () {
         return (

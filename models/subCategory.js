@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');       //! Require mongoose
 const Schema = mongoose.Schema;             //! Shorthand for mongoose.Schema
 
-const categoryTwoSchema = new Schema (
+const subCategorySchema = new Schema (
     {
         name: {
             type: String,
@@ -18,4 +18,4 @@ const categoryTwoSchema = new Schema (
     }
 );
 
-module.exports = mongoose.model('CategoryTwo', categoryTwoSchema);
+module.exports = mongoose.model('SubCategory', subCategorySchema);

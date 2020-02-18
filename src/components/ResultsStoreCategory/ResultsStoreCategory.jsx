@@ -3,11 +3,11 @@ import Table from 'react-bootstrap/Table'
 import { Link } from 'react-router-dom';
 
 const ResultsStoreCategory = (props) => {
-    let storesList;
+    let list;
     if (props.data) {
-        storesList = props.data.map((store, idx) => {
+        list = props.data.map((store, idx) => {
             return(
-                <tr key={props.description + idx}>
+                <tr key={props.description1 + idx}>
                   <td>{store.name}</td>
                   <td><Link to={props.redirect} onClick={() => props.handleDelete(store._id)}>Delete</Link></td>
                 </tr>
@@ -19,12 +19,12 @@ const ResultsStoreCategory = (props) => {
         <Table striped bordered hover size="sm">
           <thead>
             <tr>
-              <th>Stores{props.data ? ` (${props.data.length})` : ''}</th>
+              <th>{props.description2}{props.data ? ` (${props.data.length})` : ''}</th>
               <th>Delete</th>
             </tr>
           </thead>
           <tbody>
-            {storesList}
+            {list}
           </tbody>
         </Table>
     );
