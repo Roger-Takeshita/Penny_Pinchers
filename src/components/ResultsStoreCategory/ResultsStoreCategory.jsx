@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 const ResultsStoreCategory = (props) => {
     let list;
     if (props.data) {
-        list = props.data.map((store, idx) => {
+        list = props.data.map((item, idx) => {
             return(
                 <tr key={props.description1 + idx}>
-                  <td>{store.name}</td>
-                  <td><Link to={props.redirect} onClick={() => props.handleDelete(store._id)}>Delete</Link></td>
+                  <td>{item.name}</td>
+                  <td><Link to={props.redirect} onClick={() => props.handleDelete(item._id)}>Delete</Link></td>
                 </tr>
             );
         });

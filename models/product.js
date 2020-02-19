@@ -34,19 +34,20 @@ const productSchema = new Schema (
             ref: 'Store',
             required: true
         },
-        categoryOne: {
+        frequency: {
             type: String,
             enum: ["Monthly", "One Time"],
             required: true
         },
-        categoryTwo: {
+        category: {
             type: Schema.Types.ObjectId,
-            ref: 'CategoryTwo',
+            ref: 'Category',
             required: true
         },
-        categoryThree: {
-            type: String,
-            required: true,
+        subCategory: {
+            type: Schema.Types.ObjectId,
+            ref: 'SubCategory',
+            required: true
         },
         user: {
             type: Schema.Types.ObjectId,

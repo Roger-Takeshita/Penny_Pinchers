@@ -45,7 +45,7 @@ class CategoryTwoPage extends Component {
     }
 
     isFormInvalid() {
-    return !(this.state.name);
+        return !(this.state.name);
     }
 
     render () {

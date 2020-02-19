@@ -4,6 +4,7 @@ const listCtrl = require('../../controllers/lists');   //! Require Lists Control
 const storeCtrl = require('../../controllers/stores');
 const categoryCtrl = require('../../controllers/categories');
 const subCategoryCtrl = require('../../controllers/subCategories');
+const productCtrl = require('../../controllers/products');
 
 //! Public routes
 
@@ -19,7 +20,9 @@ const subCategoryCtrl = require('../../controllers/subCategories');
     router.get('/subcategories/', checkAuth, subCategoryCtrl.subCategories);
     router.post('/newsubcategory', checkAuth, subCategoryCtrl.newSubCategory);
     router.delete('/deletesubcategory/:id', checkAuth, subCategoryCtrl.deleteSubCategory);
-
+    router.get('/products/', checkAuth, productCtrl.products);
+    router.post('/newproduct', checkAuth, productCtrl.newProduct);
+    router.delete('/deleteproduct/:id', checkAuth, productCtrl.deleteProduct);
 
 //! Helper functions
     function checkAuth(req, res, next) {

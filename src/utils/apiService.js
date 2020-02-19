@@ -11,78 +11,82 @@ function getMyLists () {
     return fetch('/api/mylists', options).then(res => res.json());
 }
 
-function getStoresCategoriesSubCategories (apiPath) {
-    const options = {
-        method: 'GET',
-        headers: {
-            'Content-type': 'application/json',
-            'Authorization': 'Bearer ' + tokenService.getToken()
-        }
-    };
-    return fetch(apiPath, options).then(res => res.json());
-}
+//! ----------------------------- API Request - Stores / Categories / Sub-Categories
+    function getStoresCategoriesSubCategories (apiPath) {
+        const options = {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + tokenService.getToken()
+            }
+        };
+        return fetch(apiPath, options).then(res => res.json());
+    }
 
-function newStoreCategorySubCategory (name, apiPath) {
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/json',
-            'Authorization': 'Bearer ' + tokenService.getToken()
-        },
-        body: JSON.stringify(name)
-    };
-    return fetch(apiPath, options).then(res => res.json());
-}
+    function newStoreCategorySubCategory (name, apiPath) {
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + tokenService.getToken()
+            },
+            body: JSON.stringify(name)
+        };
+        return fetch(apiPath, options).then(res => res.json());
+    }
 
-function deleteStoreCategorySubCategory (apiPath) {
-    const options = {
-        method: 'DELETE',
-        headers: {
-            'Content-type': 'application/json',
-            'Authorization': 'Bearer ' + tokenService.getToken()
-        }
-    };
-    return fetch(apiPath, options).then(res => res.json());
-}
+    function deleteStoreCategorySubCategory (apiPath) {
+        const options = {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + tokenService.getToken()
+            }
+        };
+        return fetch(apiPath, options).then(res => res.json());
+    }
 
-//! ----------------------------- Stores
-// function getMyStores () {
-//     const options = {
-//         method: 'GET',
-//         headers: {
-//             'Content-type': 'application/json',
-//             'Authorization': 'Bearer ' + tokenService.getToken()
-//         }
-//     };
-//     return fetch('/api/mystores', options).then(res => res.json());
-// }
+//! ----------------------------- API Request - Products
+    function getProducts (apiPath) {
+        const options = {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + tokenService.getToken()
+            }
+        };
+        return fetch(apiPath, options).then(res => res.json());
+    }
 
-// function newStore (storeName) {
-//     const options = {
-//         method: 'POST',
-//         headers: {
-//             'Content-type': 'application/json',
-//             'Authorization': 'Bearer ' + tokenService.getToken()
-//         },
-//         body: JSON.stringify(storeName)
-//     };
-//     return fetch('/api/newstore', options).then(res => res.json());
-// }
+    function newProduct (productObj, apiPath) {
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + tokenService.getToken()
+            },
+            body: JSON.stringify(productObj)
+        };
+        return fetch(apiPath, options).then(res => res.json());
+    }
 
-// function deleteStore (id) {
-//     const options = {
-//         method: 'DELETE',
-//         headers: {
-//             'Content-type': 'application/json',
-//             'Authorization': 'Bearer ' + tokenService.getToken()
-//         }
-//     };
-//     return fetch(`/api/deletestore/${id}`, options).then(res => res.json());
-// }
+    function deleteProduct (apiPath) {
+        const options = {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + tokenService.getToken()
+            }
+        };
+        return fetch(apiPath, options).then(res => res.json());
+    }
 
 export default {
     getMyLists,
     getStoresCategoriesSubCategories,
     newStoreCategorySubCategory,
     deleteStoreCategorySubCategory,
+    getProducts,
+    newProduct,
+    deleteProduct
 };
