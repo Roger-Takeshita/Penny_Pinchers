@@ -138,6 +138,17 @@ import tokenService from './tokenService';
         return fetch(apiPath, options).then(res => res.json());
     }
 
+    function deleteProductFromList (apiPath) {
+        const options = {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + tokenService.getToken()
+            }
+        };
+        return fetch(apiPath, options).then(res => res.json());
+    }
+
 //! ----------------------------- API Request - User
     function getUserBalance (apiPath) {
         const options = {
@@ -164,4 +175,5 @@ export default {
     deleteList,
     newExpense,
     getUserBalance,
+    deleteProductFromList,
 };

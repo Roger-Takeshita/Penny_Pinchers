@@ -58,9 +58,8 @@ class ProductFrom extends Component {
                 extraInfo:'',
                 message: '',
             });
-            this.props.updateData({data});
+            this.props.updateData(data);
             this.props.history.push('/products');
-
         } catch (err) {
             this.setState({message: err.message});
         }

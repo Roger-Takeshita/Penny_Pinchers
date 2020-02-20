@@ -11,23 +11,39 @@ class ProductPage extends Component {
             dataStores: null,
             dataCategories: null,
             dataSubCategories: null,
-            count: 0
+            dataFlag: false
         };
     }
 
     async componentDidMount() {
-        const data = await apiService.getProducts('/api/products');
-        this.setState({cout:1, data})
-        const dataStores = await apiService.getStoresCategoriesSubCategories('/api/stores');
-        this.setState({count:2, dataStores})
-        const dataCategories = await apiService.getStoresCategoriesSubCategories('/api/categories');
-        this.setState({count:3, dataCategories})
-        const dataSubCategories = await apiService.getStoresCategoriesSubCategories('/api/subcategories');
-        this.setState({count:4, dataSubCategories})
+        try {
+            const [data, dataStores, dataCategories, dataSubCategories] = await Promise.all([
+                apiService.getProducts('/api/products'),
+                apiService.getStoresCategoriesSubCategories('/api/stores'),
+                apiService.getStoresCategoriesSubCategories('/api/categories'),
+                apiService.getStoresCategoriesSubCategories('/api/subcategories')
+            ]);
+            this.setState({
+                data,
+                dataStores,
+                dataCategories,
+                dataSubCategories,
+                dataFlag: true
+            })
+        } catch (err) {
+            this.setState({
+                data: null,
+                dataStores: null,
+                dataCategories: null,
+                dataSubCategories: null,
+                dataFlag: false
+            })
+            console.log(err);
+        }
     }
     
-    updateData(data) {
-        this.setState({data: data})
+    updateData = (data) => {
+        this.setState({data})
     }
 
     handleDelete = async (id) => {
@@ -41,7 +57,7 @@ class ProductPage extends Component {
     }
 
     render () {
-        if (this.state.count === 4){
+        if (this.state.dataFlag) {
             return (
                 <>
                     <div className="container">

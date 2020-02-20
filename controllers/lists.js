@@ -13,8 +13,17 @@ async function lists (req, res) {
 
 async function list (req, res) {
     try {
-        const list = await Expense.findById(req.params.id).select('_id name products extraInfo').sort({products: 1});
-        res.json(list);
+        const data = await Expense.findById(req.params.id)
+        .select('-createdAt -updatedAt -user -products.createdAt -products.updatedAt')
+        .populate({
+            path: 'products.product',
+            select: ['-createdAt', '-updatedAt', '-user', '-price', '-tax'],
+            populate: {
+                path: 'store category subCategory',
+                select: ['-createdAt', '-updatedAt', '-user']
+            }
+        });
+        res.json(data);
     } catch (err) {
         console.log(err);
         res.json({error: err});
@@ -127,7 +136,7 @@ async function newExpense (req, res) {
             .select('-createdAt -updatedAt -user -products.createdAt -products.updatedAt')
             .populate({
                 path: 'products.product',
-                select: ['-createdAt', '-updatedAt', '-user', '-price', '-tax', '-pricePerKgPound'],
+                select: ['-createdAt', '-updatedAt', '-user', '-price', '-tax'],
                 populate: {
                     path: 'store category subCategory',
                     select: ['-createdAt', '-updatedAt', '-user']

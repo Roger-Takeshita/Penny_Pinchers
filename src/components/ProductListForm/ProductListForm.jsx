@@ -152,10 +152,8 @@ class ProductFrom extends Component {
                 quantity: '',
                 oneProduct: null
             });
-            console.log(data)
             this.props.updateData(data);
-            // this.props.history.push(`/list/${this.props.data._id}`);
-
+            this.props.history.push(`/list/${this.props.data._id}`);
         } catch (err) {
             this.setState({message: err.message});
         }
