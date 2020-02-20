@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import apiService from '../../utils/apiService';
+// import apiService from '../../utils/apiService';
 
 class ListsPage extends Component {
     state = {

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');       //! Require mongoose
 const Schema = mongoose.Schema;             //! Shorthand for mongoose.Schema
 
-const productSchema = new Schema (
+const prodSchema = new Schema (
     {
         quantity: {
             type: Number,
@@ -48,7 +48,7 @@ const expenseSchema = new Schema (
             type: Boolean,
             default: false
         },
-        products:[productSchema],
+        products:[prodSchema],
         user: {
             type: Schema.Types.ObjectId,
             ref: 'User'
