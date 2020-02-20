@@ -138,6 +138,18 @@ import tokenService from './tokenService';
         return fetch(apiPath, options).then(res => res.json());
     }
 
+//! ----------------------------- API Request - User
+    function getUserBalance (apiPath) {
+        const options = {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': 'Bearer ' + tokenService.getToken()
+            }
+        };
+        return fetch(apiPath, options).then(res => res.json());
+    }
+
 export default {
     getStoresCategoriesSubCategories,
     newStoreCategorySubCategory,
@@ -151,4 +163,5 @@ export default {
     newList,
     deleteList,
     newExpense,
+    getUserBalance,
 };

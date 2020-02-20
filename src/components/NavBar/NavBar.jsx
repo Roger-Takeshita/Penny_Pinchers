@@ -15,7 +15,7 @@ const NavBar = (props) => {
     let nav = props.user ? 
         <Navbar.Collapse id="basic-navbar-nav" className={styles.NavBar2}>
             <Nav className="mr-auto">
-                <Nav.Link><Link className={`${styles.NavBarLink} nav-link`} to="/lists">Lists</Link></Nav.Link>
+                <Nav.Link><Link className={`${styles.NavBarLink} nav-link`} to="/lists">My Lists</Link></Nav.Link>
                 <Nav.Link><Link className={`${styles.NavBarLink} nav-link`} to="/newlist">New List</Link></Nav.Link>
                 <NavDropdown className={`${styles.NavBarLink} nav-link`} title={props.user.firstName.charAt(0).toUpperCase() + props.user.firstName.slice(1) + " " + props.user.lastName.charAt(0).toUpperCase() + props.user.lastName.slice(1)} id="basic-nav-dropdown">
                     <NavDropdown.Item><Link className="nav-link" to="/profile">Profile</Link></NavDropdown.Item>

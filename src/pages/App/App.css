@@ -4,3 +4,13 @@
 main {
   min-height: 85vh;
 }
+
+.title-page {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.title-page > h2 {
+  font-weight: bolder;
+  color: black;
+}

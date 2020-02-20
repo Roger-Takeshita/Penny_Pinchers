@@ -30,6 +30,7 @@ const productCtrl = require('../../controllers/products');
     router.delete('/list/:id/:prodId', checkAuth, listCtrl.deleteExpense);
     router.post('/newlist', checkAuth, listCtrl.newList);
     router.delete('/deletelist/:id', checkAuth, listCtrl.deleteList);
+    router.get('/user/:id', checkAuth, listCtrl.getUserBalance);
 
 //! Helper functions
     function checkAuth(req, res, next) {

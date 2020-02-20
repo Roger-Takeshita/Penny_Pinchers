@@ -109,7 +109,6 @@ class ProductFrom extends Component {
                             <Form.Control placeholder="Enter a bar code" name="barCode" value={this.state.barCode} onChange={this.handleChange} />
                             <Form.Text className="text-muted">(Optional)</Form.Text>
                         </Form.Group>
-                        <Button variant="primary" type="submit">Scan</Button>
                     </Form.Row>
 
                     <Form.Group controlId="formDescription">
@@ -141,8 +140,9 @@ class ProductFrom extends Component {
                             <Form.Text className="text-muted">(Optional)</Form.Text>
                         </Form.Group>
                         <Form.Group as={Col} controlId="formPriceKg">
-                            <Form.Label>Price$ *</Form.Label>
+                            <Form.Label>Price$</Form.Label>
                             <Form.Control placeholder="XX.XX" name="pricePerKgPound" value={this.state.pricePerKgPound} onChange={this.handleChange} />
+                            <Form.Text className="text-muted">(Optional)</Form.Text>
                         </Form.Group>
                         <Form.Group as={Col} controlId="formStore">
                             <Form.Label>Store *</Form.Label>

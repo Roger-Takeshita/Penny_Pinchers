@@ -134,11 +134,23 @@ async function deleteExpense (req, res) {
     }
 }
 
+async function getUserBalance (req, res) {
+    try {
+        //= need to query all the expenses of the month
+        const data = await Expense.findById(req.params.id).select('_id name products extraInfo').sort({products: 1});
+        res.json(data);
+    } catch (err) {
+        res.json(err);
+    }
+ 
+}
+
 module.exports = {
     lists,
     list,
     newList,
     deleteList,
     newExpense,
-    deleteExpense
+    deleteExpense,
+    getUserBalance
 }

@@ -34,21 +34,26 @@ class NewListPage extends Component {
     render () {
         return (
             <>
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Group controlId="nameForm" onChange={this.handleChange}>
-                        <Form.Label>New List</Form.Label>
-                        <Form.Control placeholder="Name" name="name" />
-                    </Form.Group>
+                <div className="container">
+                    <div className="title-page">
+                        <h2>New List</h2>
+                    </div>
+                    <Form onSubmit={this.handleSubmit}>
+                        <Form.Group controlId="nameForm" onChange={this.handleChange}>
+                            <Form.Label>List</Form.Label>
+                            <Form.Control placeholder="Name" name="name" />
+                        </Form.Group>
 
-                    <Form.Group controlId="extraInfoForm">
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control as="textarea" rows="3" name="extraInfo" onChange={this.handleChange}/>
-                        <Form.Text className="text-muted">(Optional)</Form.Text>
-                    </Form.Group>
+                        <Form.Group controlId="extraInfoForm">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control as="textarea" rows="3" name="extraInfo" onChange={this.handleChange}/>
+                            <Form.Text className="text-muted">(Optional)</Form.Text>
+                        </Form.Group>
 
-                    <Button variant="primary" type="submit">Submit</Button>
-                </Form>
-                <div><p>{this.state.message}</p></div>
+                        <Button variant="primary" type="submit">Submit</Button>
+                    </Form>
+                    <div><p>{this.state.message}</p></div>
+                </div>
             </>
         );
     };

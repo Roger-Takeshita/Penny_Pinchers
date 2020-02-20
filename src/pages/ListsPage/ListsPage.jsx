@@ -13,7 +13,6 @@ class ListsPage extends Component {
     // }
 
     render () {
-        console.log(this.props.match.params.id)
         return (
             <div>
                 Lists Page:

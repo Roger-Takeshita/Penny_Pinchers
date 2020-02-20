@@ -51,18 +51,23 @@ class CategoryTwoPage extends Component {
     render () {
         return (
             <>
-                <div className={styles.StoreCategorySubCategoryPageFormDiv}>
-                    <form className={styles.StoreCategorySubCategoryPageForm} onSubmit={this.handleSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="descriptionInput">Sub-Category's Name</label>
-                            <input className="form-control" value={this.state.name} name="name" onChange={this.handleChange} id="descriptionInput" placeholder=""/>
-                            <button className={this.isFormInvalid() ? `${styles.buttonInvalid} btn btn-default` : `${styles.buttonValid} btn btn-default`} disabled={this.isFormInvalid()}>Submit</button>&nbsp;&nbsp;&nbsp;
-                            <Link to='/subcategories' className='buttonCancel' onClick={() => this.setState({name: ''})}>Cancel</Link>
-                        </div>
-                    </form>
+                <div className="container">
+                    <div className="title-page">
+                        <h2>Sub-Category Management</h2>
+                    </div>
+                    <div className={styles.StoreCategorySubCategoryPageFormDiv}>
+                        <form className={styles.StoreCategorySubCategoryPageForm} onSubmit={this.handleSubmit}>
+                            <div className="form-group">
+                                <label htmlFor="descriptionInput">Add a Sub-Category</label>
+                                <input className="form-control" value={this.state.name} name="name" onChange={this.handleChange} id="descriptionInput" placeholder="Name"/>
+                                <button className={this.isFormInvalid() ? `${styles.buttonInvalid} btn btn-default` : `${styles.buttonValid} btn btn-default`} disabled={this.isFormInvalid()}>Submit</button>&nbsp;&nbsp;&nbsp;
+                                <Link to='/subcategories' className='buttonCancel' onClick={() => this.setState({name: ''})}>Cancel</Link>
+                            </div>
+                        </form>
+                    </div>
+                    <div><p>{this.state.message}</p></div>
+                    <ResultsStoreCategory description1='Sub-Category' description2='Sub-Categories' redirect='/subcategories' data={this.state.data} handleDelete={this.handleDelete} />
                 </div>
-                <div><p>{this.state.message}</p></div>
-                <ResultsStoreCategory description1='Sub-Category' description2='Sub-Categories' redirect='/subcategories' data={this.state.data} handleDelete={this.handleDelete} />
             </>
         );
     };

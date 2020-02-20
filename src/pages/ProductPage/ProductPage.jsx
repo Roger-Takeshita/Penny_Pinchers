@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styles from './ProductPage.module.css';
 import ProductForm from '../../components/ProductForm/ProductForm';
 import ResultsProducts from '../../components/ResultsProducts/ResultsProducts';
 import apiService from '../../utils/apiService';
@@ -45,7 +44,10 @@ class ProductPage extends Component {
         if (this.state.count === 4){
             return (
                 <>
-                    <div className={styles.ProductPageFormDiv}>
+                    <div className="container">
+                        <div className="title-page">
+                            <h2>Product Management</h2>
+                        </div>
                         <ProductForm {...this.props} dataStores={this.state.dataStores} dataCategories={this.state.dataCategories} dataSubCategories={this.state.dataSubCategories} updateData={this.updateData} />
                     </div>
                     <ResultsProducts description1='Product' description2='Products' redirect='/products' data={this.state.data} handleDelete={this.handleDelete} updateData={this.updateData} />
