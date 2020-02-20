@@ -10,7 +10,6 @@ const productCtrl = require('../../controllers/products');
 
 //! Private routes
     router.use(require('../../config/auth'));
-    router.get('/lists/', checkAuth, listCtrl.myLists);
     router.get('/stores/', checkAuth, storeCtrl.stores);
     router.post('/newstore', checkAuth, storeCtrl.newStore);
     router.delete('/deletestore/:id', checkAuth, storeCtrl.deleteStore);
@@ -21,8 +20,16 @@ const productCtrl = require('../../controllers/products');
     router.post('/newsubcategory', checkAuth, subCategoryCtrl.newSubCategory);
     router.delete('/deletesubcategory/:id', checkAuth, subCategoryCtrl.deleteSubCategory);
     router.get('/products/', checkAuth, productCtrl.products);
+    router.get('/product/:id', checkAuth, productCtrl.productId);
+    router.get('/product/name/:id', checkAuth, productCtrl.productName);
     router.post('/newproduct', checkAuth, productCtrl.newProduct);
     router.delete('/deleteproduct/:id', checkAuth, productCtrl.deleteProduct);
+    router.get('/lists/', checkAuth, listCtrl.lists);
+    router.get('/list/:id', checkAuth, listCtrl.list);
+    router.post('/list/:id/newexpense', checkAuth, listCtrl.newExpense);
+    router.delete('/list/:id/:prodId', checkAuth, listCtrl.deleteExpense);
+    router.post('/newlist', checkAuth, listCtrl.newList);
+    router.delete('/deletelist/:id', checkAuth, listCtrl.deleteList);
 
 //! Helper functions
     function checkAuth(req, res, next) {

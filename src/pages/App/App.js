@@ -13,15 +13,13 @@ import CategoryPage from '../CategoryPage/CategoryPage';
 import SubCategoryPage from '../SubCategoryPage/SubCategoryPage';
 import AboutPage from '../../pages/AboutPage/AboutPage';
 import ListsPage from '../../pages/ListsPage/ListsPage';
+import ListPage from '../../pages/ListPage/ListPage';
 import NewListPage from '../../pages/NewListPage/NewListPage';
 import userService from '../../utils/userService';
 
 class App extends Component {
-    constructor() {
-        super();
-        this.state = {
-            user: userService.getUser()
-        };
+    state = {
+        user: userService.getUser()
     };
 
     handleSignupOrLogin = () => {
@@ -60,6 +58,9 @@ class App extends Component {
                 )} />
                 <Route exact path="/lists" render={({ history }) => (
                     <ListsPage history={history} user={this.state.user}/>
+                )} />
+                <Route exact path="/list/:id" render={({ history, match }) => (
+                    <ListPage {...this.props} match={match} history={history} user={this.state.user}/>
                 )} />
                 <Route exact path="/newlist" render={({ history }) => (
                     <NewListPage history={history} user={this.state.user}/>

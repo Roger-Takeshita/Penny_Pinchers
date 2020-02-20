@@ -4,15 +4,13 @@ const Schema = mongoose.Schema;             //! Shorthand for mongoose.Schema
 const productSchema = new Schema (
     {
         barCode: {
-            type: String
+            type: String,
+            unique: true
         },
         description: {
             type: String,
             required: true,
             unique: true
-        },
-        extraInfo: {
-            type: String
         },
         price: {
             type: Number,

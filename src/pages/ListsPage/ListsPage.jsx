@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import apiService from '../../utils/apiService';
 
 class ListsPage extends Component {
     state = {
@@ -6,12 +7,13 @@ class ListsPage extends Component {
     }
 
     // async componentDidMount() {
-    //     const data = await apiService.getMyLists(this.props.user);
+    //     const data = await apiService.getList(this.props.user);
     //     this.setState({data: data})
     //     console.log(data)
     // }
 
     render () {
+        console.log(this.props.match.params.id)
         return (
             <div>
                 Lists Page:

@@ -9,6 +9,24 @@ async function products (req, res) {
     }
 }
 
+async function productId (req, res) {
+    try {
+        const product = await Product.findOne({'barCode': req.params.id}).populate('store category subCategory').select(['_id', 'barCode', 'description', 'price', 'tax', 'kgPoundEa', 'pricePerKgPound', 'store', 'frequency', 'category', 'subCategory', 'extraInfo']);
+        res.json(product);
+    } catch (err) {
+        res.json(err);
+    }
+}
+
+async function productName (req, res) {
+    try {
+        const products = await Product.find({'user.$id': req.body._id}).populate('store category subCategory').select(['_id', 'barCode', 'description', 'price', 'tax', 'kgPoundEa', 'pricePerKgPound', 'store', 'frequency', 'category', 'subCategory', 'extraInfo']);
+        res.json(products);
+    } catch (err) {
+        res.json(err);
+    }
+}
+
 async function newProduct (req, res) {
     try {
         const product = await Product.findOne({description: req.body.description});
@@ -34,6 +52,8 @@ async function deleteProduct (req, res) {
 
 module.exports = {
     products,
+    productId,
+    productName,
     newProduct,
     deleteProduct
 }
