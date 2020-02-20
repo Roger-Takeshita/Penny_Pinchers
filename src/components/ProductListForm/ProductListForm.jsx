@@ -54,7 +54,25 @@ class ProductFrom extends Component {
                 })
             }
         } catch (err) {
-            this.setState({message: 'Product not found!'});
+            this.setState({
+                message: 'Product not found!',
+                productId: '',
+                description: '',
+                price: '',
+                tax: '',
+                kgPoundEa: '',
+                pricePerKgPound: '',
+                store: '',
+                frequency: '',
+                category: '',
+                subCategory: '',
+                extraInfoList:'',
+                extraInfoProduct: '',
+                extraCharges: '',
+                discount: '',
+                quantity: '',
+                oneProduct: null
+            });
         }
     }
 
