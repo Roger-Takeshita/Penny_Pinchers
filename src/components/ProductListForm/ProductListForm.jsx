@@ -194,120 +194,108 @@ class ProductFrom extends Component {
         }
         return (
             <>
-                <div className="container">
-                    <Form onSubmit={this.handleSubmit}>
-                        <Form.Row>
-                            <Form.Group controlId="nameForm">
-                                <Form.Label>List Name: {this.props.data.name}</Form.Label>
-                            </Form.Group>
-                        </Form.Row>
-                        <Form.Row>
-                            <Form.Group controlId="extraInfoFormProduct">
-                                <Form.Label>Extra Info: {this.props.data.extraInfo}</Form.Label>
-                            </Form.Group>
-                        </Form.Row>
-                        <Form.Row>
-                            <Form.Group as={Col} controlId="formBarCode">
-                                <Form.Label>Bar Code</Form.Label>
-                                <Form.Control placeholder="Enter a bar code" name="barCode" value={this.state.barCode} onChange={this.handleChangeBarCode} />
-                                <Form.Text className="text-muted">(Optional)</Form.Text>
-                            </Form.Group>
-                        </Form.Row>
-
-                        <Form.Group controlId="formDescription">
-                            <Form.Label>Description *</Form.Label>
-                            <Form.Control placeholder="T&T Dried Shiitake Mushrooms (454 g)" name="description" value={this.state.description} onChange={this.handleChange} />
-                        </Form.Group>
-
-                        <Form.Row>
-                            <Form.Group as={Col} controlId="formPrice">
-                                <Form.Label>Price$ *</Form.Label>
-                                <Form.Control placeholder="XX.XX" name="price" value={this.state.price} onChange={this.handleChange} />
-                            </Form.Group>
-                            <Form.Group as={Col} controlId="formTax">
-                                <Form.Label>Tax%</Form.Label>
-                                <Form.Control placeholder="XX.XX" name="tax" value={this.state.tax} onChange={this.handleChange} />
-                                <Form.Text className="text-muted">(Optional)</Form.Text>
-                            </Form.Group>
-                        </Form.Row>
-
-                        <Form.Row>
-                            <Form.Group as={Col} controlId="formScale">
-                                <Form.Label>$/Kg / $/Lb / $Ea</Form.Label>
-                                <Form.Control as="select" name="kgPoundEa" value={this.state.kgPoundEa} onChange={this.handleChange}>
-                                    <option></option>
-                                    <option>$/Kg</option>
-                                    <option>$/Lb</option>
-                                    <option>$Ea</option>
-                                </Form.Control>
-                                <Form.Text className="text-muted">(Optional)</Form.Text>
-                            </Form.Group>
-                            <Form.Group as={Col} controlId="formPriceKg">
-                                <Form.Label>Price$</Form.Label>
-                                <Form.Control placeholder="XX.XX" name="pricePerKgPound" value={this.state.pricePerKgPound} onChange={this.handleChange} />
-                                <Form.Text className="text-muted">(Optional)</Form.Text>
-                            </Form.Group>
-                            <Form.Group as={Col} controlId="formStore">
-                                <Form.Label>Store *</Form.Label>
-                                <Form.Control as="select" name="store" value={this.state.store} onChange={this.handleChange}>
-                                    <option></option>
-                                    {stores}
-                                </Form.Control>
-                            </Form.Group>
-                        </Form.Row>
-
-                        <Form.Row>
-                            <Form.Group as={Col} controlId="formMonthly">
-                                <Form.Label>Frequency *</Form.Label>
-                                <Form.Control as="select" name="frequency" value={this.state.frequency} onChange={this.handleChange}>
-                                    <option></option>
-                                    <option>Monthly</option>
-                                    <option>One Time</option>
-                                </Form.Control>
-                            </Form.Group>
-                            <Form.Group as={Col} controlId="formCategory">
-                                <Form.Label>Category *</Form.Label>
-                                <Form.Control as="select" name="category" value={this.state.category} onChange={this.handleChange}>
-                                    <option></option>
-                                    {categories}
-                                </Form.Control>
-                            </Form.Group>
-                            <Form.Group as={Col} controlId="formSubCategory">
-                                <Form.Label>Sub-Category *</Form.Label>
-                                <Form.Control as="select" name="subCategory" value={this.state.subCategory} onChange={this.handleChange}>
-                                    <option></option>
-                                    {subCategories}
-                                </Form.Control>
-                            </Form.Group>
-                        </Form.Row>
-
-                        <Form.Row>
-                            <Form.Group as={Col} controlId="extraChargeForm">
-                                <Form.Label>Extra Charges$</Form.Label>
-                                <Form.Control placeholder="XX.XX" name="extraCharges" value={this.state.extraCharges} onChange={this.handleChange} />
-                                <Form.Text className="text-muted">(Optional)</Form.Text>
-                            </Form.Group>
-                            <Form.Group as={Col} controlId="dicountForm">
-                                <Form.Label>Discount$</Form.Label>
-                                <Form.Control placeholder="XX.XX" name="discount" value={this.state.discount} onChange={this.handleChange} />
-                                <Form.Text className="text-muted">(Optional)</Form.Text>
-                            </Form.Group>
-                            <Form.Group as={Col} controlId="quantityForm">
-                                <Form.Label>Quantity *</Form.Label>
-                                <Form.Control name="quantity" value={this.state.quantity} onChange={this.handleChange} />
-                            </Form.Group>
-                        </Form.Row>
-
-                        <Form.Group controlId="formExtraInfo">
-                            <Form.Label>Extra Information</Form.Label>
-                            <Form.Control as="textarea" rows="4" name="extraInfoList" value={this.state.extraInfoList} onChange={this.handleChange}/>
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formBarCode">
+                            <Form.Label>Bar Code</Form.Label>
+                            <Form.Control placeholder="Enter a bar code" name="barCode" value={this.state.barCode} onChange={this.handleChangeBarCode} />
                             <Form.Text className="text-muted">(Optional)</Form.Text>
                         </Form.Group>
+                    </Form.Row>
 
-                        <Button variant="primary" type="submit" disabled={this.isFormInvalid()}>Submit</Button>
-                    </Form>
-                    <p>{this.state.message}</p>
-                </div>
+                    <Form.Group controlId="formDescription">
+                        <Form.Label>Description *</Form.Label>
+                        <Form.Control placeholder="T&T Dried Shiitake Mushrooms (454 g)" name="description" value={this.state.description} onChange={this.handleChange} />
+                    </Form.Group>
+
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formPrice">
+                            <Form.Label>Price$ *</Form.Label>
+                            <Form.Control placeholder="XX.XX" name="price" value={this.state.price} onChange={this.handleChange} />
+                        </Form.Group>
+                        <Form.Group as={Col} controlId="formTax">
+                            <Form.Label>Tax%</Form.Label>
+                            <Form.Control placeholder="XX.XX" name="tax" value={this.state.tax} onChange={this.handleChange} />
+                            <Form.Text className="text-muted">(Optional)</Form.Text>
+                        </Form.Group>
+                    </Form.Row>
+
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formScale">
+                            <Form.Label>$/Kg / $/Lb / $Ea</Form.Label>
+                            <Form.Control as="select" name="kgPoundEa" value={this.state.kgPoundEa} onChange={this.handleChange}>
+                                <option></option>
+                                <option>$/Kg</option>
+                                <option>$/Lb</option>
+                                <option>$Ea</option>
+                            </Form.Control>
+                            <Form.Text className="text-muted">(Optional)</Form.Text>
+                        </Form.Group>
+                        <Form.Group as={Col} controlId="formPriceKg">
+                            <Form.Label>Price$</Form.Label>
+                            <Form.Control placeholder="XX.XX" name="pricePerKgPound" value={this.state.pricePerKgPound} onChange={this.handleChange} />
+                            <Form.Text className="text-muted">(Optional)</Form.Text>
+                        </Form.Group>
+                        <Form.Group as={Col} controlId="formStore">
+                            <Form.Label>Store *</Form.Label>
+                            <Form.Control as="select" name="store" value={this.state.store} onChange={this.handleChange}>
+                                <option></option>
+                                {stores}
+                            </Form.Control>
+                        </Form.Group>
+                    </Form.Row>
+
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formMonthly">
+                            <Form.Label>Frequency *</Form.Label>
+                            <Form.Control as="select" name="frequency" value={this.state.frequency} onChange={this.handleChange}>
+                                <option></option>
+                                <option>Monthly</option>
+                                <option>One Time</option>
+                            </Form.Control>
+                        </Form.Group>
+                        <Form.Group as={Col} controlId="formCategory">
+                            <Form.Label>Category *</Form.Label>
+                            <Form.Control as="select" name="category" value={this.state.category} onChange={this.handleChange}>
+                                <option></option>
+                                {categories}
+                            </Form.Control>
+                        </Form.Group>
+                        <Form.Group as={Col} controlId="formSubCategory">
+                            <Form.Label>Sub-Category *</Form.Label>
+                            <Form.Control as="select" name="subCategory" value={this.state.subCategory} onChange={this.handleChange}>
+                                <option></option>
+                                {subCategories}
+                            </Form.Control>
+                        </Form.Group>
+                    </Form.Row>
+
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="extraChargeForm">
+                            <Form.Label>Extra Charges$</Form.Label>
+                            <Form.Control placeholder="XX.XX" name="extraCharges" value={this.state.extraCharges} onChange={this.handleChange} />
+                            <Form.Text className="text-muted">(Optional)</Form.Text>
+                        </Form.Group>
+                        <Form.Group as={Col} controlId="dicountForm">
+                            <Form.Label>Discount$</Form.Label>
+                            <Form.Control placeholder="XX.XX" name="discount" value={this.state.discount} onChange={this.handleChange} />
+                            <Form.Text className="text-muted">(Optional)</Form.Text>
+                        </Form.Group>
+                        <Form.Group as={Col} controlId="quantityForm">
+                            <Form.Label>Quantity *</Form.Label>
+                            <Form.Control name="quantity" value={this.state.quantity} onChange={this.handleChange} />
+                        </Form.Group>
+                    </Form.Row>
+
+                    <Form.Group controlId="formExtraInfo">
+                        <Form.Label>Extra Information</Form.Label>
+                        <Form.Control as="textarea" rows="2" name="extraInfoList" value={this.state.extraInfoList} onChange={this.handleChange}/>
+                        <Form.Text className="text-muted">(Optional)</Form.Text>
+                    </Form.Group>
+
+                    <Button variant="primary" type="submit" disabled={this.isFormInvalid()}>Submit</Button>
+                </Form>
+                <p>{this.state.message}</p>
             </>
         );
     };

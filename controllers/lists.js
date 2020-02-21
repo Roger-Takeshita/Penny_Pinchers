@@ -8,10 +8,6 @@ async function lists (req, res) {
         .populate({
             path: 'products.product',
             select: ['-createdAt', '-updatedAt', '-user', '-price', '-tax'],
-            // populate: {
-            //     path: 'store category subCategory',
-            //     select: ['-createdAt', '-updatedAt', '-user']
-            // }
         });
         res.json(data);
     } catch (err) {

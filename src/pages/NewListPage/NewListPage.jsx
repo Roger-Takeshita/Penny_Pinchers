@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button }from 'react-bootstrap'
 import apiService from '../../utils/apiService';
+import styles from '../StoreCategorySubCategory.module.css';
 
 class NewListPage extends Component {
     state = {
@@ -50,7 +51,7 @@ class NewListPage extends Component {
                             <Form.Text className="text-muted">(Optional)</Form.Text>
                         </Form.Group>
 
-                        <Button variant="primary" type="submit">Submit</Button>
+                        <Button variant="primary" type="submit" className={this.isFormInvalid() ? `${styles.buttonInvalid} btn btn-default` : `${styles.buttonValid} btn btn-default`} disabled={this.isFormInvalid()}>Submit</Button>
                     </Form>
                     <div><p>{this.state.message}</p></div>
                 </div>

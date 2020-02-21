@@ -8,18 +8,18 @@ const ResultsProducts = (props) => {
         products = props.data.map((product, idx) => {
             return(
                 <tr key={props.description1 + idx}>
-                  <td>{product.barCode}</td>
+                  <td className="text-center">{product.barCode}</td>
                   <td>{product.description}</td>
-                  <td>{product.price}</td>
-                  <td>{product.tax}</td>
-                  <td>{product.kgPoundEa}</td>
-                  <td>{product.pricePerKgPound}</td>
-                  <td>{product.category['name']}</td>
-                  <td>{product.subCategory['name']}</td>
-                  <td>{product.store['name']}</td>
-                  <td>{product.frequency}</td>
-                  <td>{product.extraInfo}</td>
-                  <td><Link to={props.redirect} onClick={() => props.handleDelete(product._id)}>Delete</Link></td>
+                  <td className="text-center">{product.price ? `$${product.price}` : ''}</td>
+                  <td className="text-center">{product.tax ? `${product.tax}%` : ''}</td>
+                  <td className="text-center">{product.kgPoundEa}</td>
+                  <td className="text-center">{product.pricePerKgPound ? `$${product.pricePerKgPound}` : ''}</td>
+                  <td className="text-center">{product.category['name']}</td>
+                  <td className="text-center">{product.subCategory['name']}</td>
+                  <td className="text-center">{product.store['name']}</td>
+                  <td className="text-center">{product.frequency}</td>
+                  <td className="text-center">{product.extraInfo}</td>
+                  <td className="text-center"><Link to={props.redirect} onClick={() => props.handleDelete(product._id)} className="delete-cancel">Delete</Link></td>
                 </tr>
             );
         });
@@ -27,21 +27,21 @@ const ResultsProducts = (props) => {
     
 
     return(
-        <Table striped bordered hover size="sm">
+        <Table striped bordered hover responsive size="sm">
           <thead>
             <tr>
-              <th>Bar Code</th>
-              <th>Description</th>
-              <th>Price $</th>
-              <th>Tax %</th>
-              <th>Unit</th>
-              <th>Unit $</th>
-              <th>Category</th>
-              <th>Sub-Category</th>
-              <th>Store</th>
-              <th>Frequency</th>
-              <th>Extra Info</th>
-              <th>Delete</th>
+              <th className="text-center">Bar Code</th>
+              <th className="text-center">Description</th>
+              <th className="text-center">$ Price</th>
+              <th className="text-center">Tax %</th>
+              <th className="text-center">Unit</th>
+              <th className="text-center">$ Unit</th>
+              <th className="text-center">Category</th>
+              <th className="text-center">Sub-Category</th>
+              <th className="text-center">Store</th>
+              <th className="text-center">Frequency</th>
+              <th className="text-center">Extra Info</th>
+              <th className="text-center">Delete</th>
             </tr>
           </thead>
           <tbody>

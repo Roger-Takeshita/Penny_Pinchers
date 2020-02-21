@@ -179,7 +179,7 @@ class ProductFrom extends Component {
 
                     <Form.Group controlId="formExtraInfo">
                         <Form.Label>Extra Information</Form.Label>
-                        <Form.Control as="textarea" rows="4" name="extraInfo" value={this.state.extraInfo} onChange={this.handleChange}/>
+                        <Form.Control as="textarea" rows="2" name="extraInfo" value={this.state.extraInfo} onChange={this.handleChange}/>
                         <Form.Text className="text-muted">(Optional)</Form.Text>
                     </Form.Group>
 

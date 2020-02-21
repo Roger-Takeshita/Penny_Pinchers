@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
@@ -45,56 +45,25 @@ class HomePage extends Component {
                         <p>Bills are now easier than ever to track. </p>
                         </Carousel.Caption>
                     </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                        className="d-block w-100"
-                        src="/Carousel_004.jpg"
-                        alt="Third slide"
-                        />
-
-                        <Carousel.Caption>
-                        <h3>Be the next Tony Stark</h3>
-                        </Carousel.Caption>
-                    </Carousel.Item>
                 </Carousel>
                 <CardDeck className={styles.addPaddingCardDeck}>
-                    <Card>
-                        <Card.Img variant="top" src="/Icons_001.png" />
+                    <Card className="align-items-center">
+                        <Card.Img className="w-50 pt-4" variant="top" src="/Icons_001.png" />
                         <Card.Body>
-                        <Card.Title>My Lists</Card.Title>
-                        <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.
-                        </Card.Text>
+                            <Card.Title><Link to="/lists">My Lists</Link></Card.Title>
                         </Card.Body>
-                        {/* <Card.Footer> */}
                     </Card>
-                    <Card>
-                        <Card.Img variant="top" src="/Icons_002.png" />
+                    <Card className="align-items-center">
+                        <Card.Img className="w-50 pt-4" variant="top" src="/Icons_002.png" />
                         <Card.Body>
-                        <Card.Title>New List</Card.Title>
-                        <Card.Text>
-                            This card has supporting text below as a natural lead-in to additional
-                            content.{' '}
-                        </Card.Text>
+                            <Card.Title><Link to="/newlist">New List</Link></Card.Title>
                         </Card.Body>
-                        {/* <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                        </Card.Footer> */}
                     </Card>
-                    <Card>
-                        <Card.Img variant="top" src="/Icons_003.png" />
+                    <Card className="align-items-center">
+                        <Card.Img className="w-50 pt-4" variant="top" src="/Icons_003.png" />
                         <Card.Body>
-                        <Card.Title>Products Manager</Card.Title>
-                        <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This card has even longer content than the first to
-                            show that equal height action.
-                        </Card.Text>
+                            <Card.Title><Link to="/products">Product DB</Link></Card.Title>
                         </Card.Body>
-                        {/* <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                        </Card.Footer> */}
                     </Card>
                 </CardDeck>
             </div>

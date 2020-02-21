@@ -62,7 +62,7 @@ class ProductPage extends Component {
                 <>
                     <div className="container">
                         <div className="title-page">
-                            <h2>Product Management</h2>
+                            <h2>Product DB</h2>
                         </div>
                         <ProductForm {...this.props} dataStores={this.state.dataStores} dataCategories={this.state.dataCategories} dataSubCategories={this.state.dataSubCategories} updateData={this.updateData} />
                     </div>

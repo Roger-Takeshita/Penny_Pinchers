@@ -9,7 +9,7 @@ const ResultsStoreCategory = (props) => {
             return(
                 <tr key={props.description1 + idx}>
                     <td>{item.name}</td>
-                    <td><Link to={props.redirect} onClick={() => props.handleDelete(item._id)}>Delete</Link></td>
+                    <td className="text-center"><Link to={props.redirect} onClick={() => props.handleDelete(item._id)} className="delete-cancel">Delete</Link></td>
                 </tr>
             );
         });
@@ -20,7 +20,7 @@ const ResultsStoreCategory = (props) => {
             <thead>
                 <tr>
                     <th>{props.description2}{props.data ? ` (${props.data.length})` : ''}</th>
-                    <th>Delete</th>
+                    <th width="100px" className="text-center">Delete</th>
                 </tr>
             </thead>
             <tbody>

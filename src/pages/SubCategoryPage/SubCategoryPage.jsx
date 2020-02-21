@@ -53,7 +53,7 @@ class CategoryTwoPage extends Component {
             <>
                 <div className="container">
                     <div className="title-page">
-                        <h2>Sub-Category Management</h2>
+                        <h2>Sub-Category DB</h2>
                     </div>
                     <div className={styles.StoreCategorySubCategoryPageFormDiv}>
                         <form className={styles.StoreCategorySubCategoryPageForm} onSubmit={this.handleSubmit}>
@@ -61,7 +61,7 @@ class CategoryTwoPage extends Component {
                                 <label htmlFor="descriptionInput">Add a Sub-Category</label>
                                 <input className="form-control" value={this.state.name} name="name" onChange={this.handleChange} id="descriptionInput" placeholder="Name"/>
                                 <button className={this.isFormInvalid() ? `${styles.buttonInvalid} btn btn-default` : `${styles.buttonValid} btn btn-default`} disabled={this.isFormInvalid()}>Submit</button>&nbsp;&nbsp;&nbsp;
-                                <Link to='/subcategories' className='buttonCancel' onClick={() => this.setState({name: ''})}>Cancel</Link>
+                                <Link to='/subcategories' className='buttonCancel' onClick={() => this.setState({name: ''})} className="delete-cancel">Cancel</Link>
                             </div>
                         </form>
                     </div>

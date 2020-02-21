@@ -71,8 +71,16 @@ class ListPage extends Component {
         if (this.state.dataFlag) {
             return (
                 <>
-                    <div className={styles.ProductPageFormDiv}>
-                        <ProductListForm {...this.props} data={this.state.data} dataStores={this.state.dataStores} dataCategories={this.state.dataCategories} dataSubCategories={this.state.dataSubCategories} updateData={this.updateData} />
+                    <div className="container product-form">
+                        <div>
+                            <h2 className="form-title">{this.state.data.name}</h2>
+                        </div>
+                        <div className="form-descri">
+                            {this.state.data.extraInfo}
+                        </div>
+                        <div className="form-form">
+                            <ProductListForm {...this.props} data={this.state.data} dataStores={this.state.dataStores} dataCategories={this.state.dataCategories} dataSubCategories={this.state.dataSubCategories} updateData={this.updateData} />
+                        </div>
                     </div>
                     <ResultsProductsList data={this.state.data} description1='List' description2='Lists' redirect={`/list/${this.props.match.params.id}`} handleDeleteItem={this.handleDeleteItem} updateData={this.updateData} />
                 </>

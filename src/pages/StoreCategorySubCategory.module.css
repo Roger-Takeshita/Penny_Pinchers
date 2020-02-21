@@ -11,7 +11,7 @@
 }
 
 .buttonValid {
-    color: green;
+    color: rgb(121, 165, 121);
 }
 
 .buttonValid:hover {
@@ -20,7 +20,7 @@
 }
 
 .buttonInvalid {
-    color: red;
+    color: rgb(250, 146, 146);
 }
 
 .buttonInvalid:hover {

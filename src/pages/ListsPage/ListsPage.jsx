@@ -28,15 +28,14 @@ class ListsPage extends Component {
     handleDelete = async (id) => {
         try {
             const data = await apiService.deleteList(`/api/deletelist/${id}`)
-            this.props.history.push('/lists');
             this.setState({message: '', data})
+            this.props.history.push('/lists');
         } catch (err) {
             this.setState({message: err.message});
         }
     }
 
     render () {
-        console.log(this.state.data)
         if (this.state.dataFlag) {
             let lists = this.state.data.map((list) => {
                 let balance = 0;
@@ -46,29 +45,35 @@ class ListsPage extends Component {
                     quantity += product.quantity;
                 });
                 return (
-                    <Link to={`/list/${list._id}`} key={list._id}>
-                        <Card style={{ width: '20rem' }}>
-                            <Card.Header><strong>List:</strong> {list.name}</Card.Header>
-                            <ListGroup variant="flush">
-                                <ListGroup.Item><span className='descrip'>{list.extraInfo}</span></ListGroup.Item>
-                                <ListGroup.Item><strong>Number of Items:</strong> <span className='quantity'>{quantity}</span></ListGroup.Item>
-                                <ListGroup.Item><strong>Balance:</strong> <span className='balance'>{(balance).toFixed(2)}$</span></ListGroup.Item>
-                            </ListGroup>
-                        </Card>
-                    </Link>
+                    <Card border="success" style={{ width: '20rem' }} className="card-sp">
+                        <Card.Header>
+                            <div className="list-header">
+                                <div><img src="/money.png" alt="money" width="30px"/></div>
+                                <div><strong>{list.name}</strong></div>
+                                <div><Link to="/lists/" onClick={() => this.handleDelete(list._id)} className="delete-cancel"><h4>X</h4></Link></div>
+                            </div>
+                        </Card.Header>
+                        <Link to={`/list/${list._id}`} key={list._id}>
+                            <Card.Body>
+                                <Card.Title>{list.extraInfo}</Card.Title>
+                                <Card.Text>
+                                <div className="list-item">
+                                    <div><strong>Number of Items:</strong></div>
+                                    <div><span className='quantity'>{quantity}</span></div>
+                                </div>
+                                <div className="list-item">
+                                    <div><strong>Balance:</strong></div>
+                                    <div><span className='balance'>${(balance).toFixed(2)}</span></div>
+                                </div>
+                                </Card.Text>
+                            </Card.Body>
+                        </Link>
+                    </Card>
                 );
             });
             return (
-                <div className="container">
+                <div className="container list-div">
                     {lists}
-                    {/* <Card style={{ width: '20rem' }}>
-                        <Card.Header>Name of the List</Card.Header>
-                        <ListGroup variant="flush">
-                            <ListGroup.Item>Extra info</ListGroup.Item>
-                            <ListGroup.Item>Total Itens: </ListGroup.Item>
-                            <ListGroup.Item>Balance</ListGroup.Item>
-                        </ListGroup>
-                    </Card> */}
                 </div>
             );
         } else {
