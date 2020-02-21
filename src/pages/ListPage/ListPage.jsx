@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './ListPage.module.css';
+// import styles from './ListPage.module.css';
 import apiService from '../../utils/apiService';
 import ProductListForm from '../../components/ProductListForm/ProductListForm';
 import ResultsProductsList from '../../components/ResultsProductsList/ResultsProductsList';

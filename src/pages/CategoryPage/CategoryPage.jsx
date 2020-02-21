@@ -61,7 +61,7 @@ class CategoryOnePage extends Component {
                                 <label htmlFor="descriptionInput">Add a Category</label>
                                 <input className="form-control" value={this.state.name} name="name" onChange={this.handleChange} id="descriptionInput" placeholder="Name"/>
                                 <button className={this.isFormInvalid() ? `${styles.buttonInvalid} btn btn-default` : `${styles.buttonValid} btn btn-default`} disabled={this.isFormInvalid()}>Submit</button>&nbsp;&nbsp;&nbsp;
-                                <Link to='/categories' className='buttonCancel' onClick={() => this.setState({name: ''})} className="delete-cancel">Cancel</Link>
+                                <Link to='/categories' onClick={() => this.setState({name: ''})} className="delete-cancel">Cancel</Link>
                             </div>
                         </form>
                     </div>

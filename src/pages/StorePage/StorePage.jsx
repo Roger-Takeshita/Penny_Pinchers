@@ -61,7 +61,7 @@ class StorePage extends Component {
                                 <label htmlFor="descriptionInput">Add a Store</label>
                                 <input className="form-control" value={this.state.name} name="name" onChange={this.handleChange} id="descriptionInput" placeholder="Name"/>
                                 <button className={this.isFormInvalid() ? `${styles.buttonInvalid} btn btn-default` : `${styles.buttonValid} btn btn-default`} disabled={this.isFormInvalid()}>Submit</button>&nbsp;&nbsp;&nbsp;
-                                <Link to='/stores' className='buttonCancel' onClick={() => this.setState({name: ''})} className="delete-cancel">Cancel</Link>
+                                <Link to='/stores' className='delete-cancel' onClick={() => this.setState({name: ''})}>Cancel</Link>
                             </div>
                         </form>
                     </div>

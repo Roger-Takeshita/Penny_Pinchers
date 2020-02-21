@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
+// import ListGroup from 'react-bootstrap/ListGroup';
 import apiService from '../../utils/apiService';
 
 class ListsPage extends Component {
@@ -40,7 +40,7 @@ class ListsPage extends Component {
             let lists = this.state.data.map((list) => {
                 let balance = 0;
                 let quantity = 0;
-                list.products.map((product) => {
+                list.products.forEach((product) => {
                     balance += (product.price*product.quantity - Number(product.discount) + Number(product.extraCharges))*(1+Number(product.tax)/100).toFixed(2);
                     quantity += product.quantity;
                 });

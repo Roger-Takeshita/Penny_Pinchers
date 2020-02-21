@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import apiService from '../../utils/apiService';
 import UserForm from '../../components/UserForm/UserForm';
-import UserFrom from '../../components/UserForm/UserForm';
+// import apiService from '../../utils/apiService';
 
 class ProfilePage extends Component {
 
@@ -14,7 +13,7 @@ class ProfilePage extends Component {
     render () {
         return (
             <div className="container">
-                <UserFrom />
+                <UserForm />
             </div>
         );
     };
