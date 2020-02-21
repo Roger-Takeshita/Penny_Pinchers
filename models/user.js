@@ -21,7 +21,6 @@ const userSchema = new Schema(
         },
         password: {
             type: String,
-            // select: false                //! Never query back the password
         },
         avatar: {
             type: String
