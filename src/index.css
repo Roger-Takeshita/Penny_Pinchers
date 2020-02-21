@@ -25,6 +25,23 @@ footer {
   background-color: #f8f9fa;
 }
 
+a, a:hover {
+  text-decoration: none !important;
+  color: black !important;
+}
+
+.balance {
+  color: red;
+}
+
+.descrip {
+  color: grey;
+}
+
+.quantity {
+  color: rgb(6, 132, 250);
+}
+
 footer a {
   text-decoration: none;
   color: black;

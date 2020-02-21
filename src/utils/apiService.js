@@ -138,7 +138,7 @@ import tokenService from './tokenService';
         return fetch(apiPath, options).then(res => res.json());
     }
 
-    function deleteProductFromList (apiPath) {
+    function deleteExpense (apiPath) {
         const options = {
             method: 'DELETE',
             headers: {
@@ -174,6 +174,6 @@ export default {
     newList,
     deleteList,
     newExpense,
+    deleteExpense,
     getUserBalance,
-    deleteProductFromList,
 };

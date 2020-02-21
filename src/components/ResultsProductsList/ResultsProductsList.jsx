@@ -23,8 +23,8 @@ const ResultsProductsList = (props) => {
                     <td>{product.tax}</td>
                     <td>{product.price}</td>
                     <td>{product.quantity}</td>
-                    <td>{(product.price * product.quantity - product.discount + product.extraCharges).toFixed(2)}</td>
-                    <td>{((product.price * product.quantity - product.discount + product.extraCharges)*(1+product.tax/100)).toFixed(2)}</td>
+                    <td>{(product.price * product.quantity - Number(product.discount) + Number(product.extraCharges)).toFixed(2)}</td>
+                    <td>{((product.price * product.quantity - Number(product.discount) + Number(product.extraCharges))*(1+Number(product.tax)/100)).toFixed(2)}</td>
                     <td>{product.extraInfo}</td>
                     <td>{product.product.store['name']}</td>
                     <td>{product.product.category['name']}</td>
@@ -35,7 +35,6 @@ const ResultsProductsList = (props) => {
             );
         });
     };
-
     return(
         <Table striped bordered hover size="sm">
             <thead>

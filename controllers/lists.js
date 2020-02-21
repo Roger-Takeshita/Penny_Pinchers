@@ -3,8 +3,17 @@ const Product = require ('../models/product');
 
 async function lists (req, res) {
     try {
-        const lists = await Expense.find({'user.$id': req.body._id});
-        res.json(lists);
+        const data = await Expense.find({'user.$id': req.body._id})
+        .select('-createdAt -updatedAt -user -products.createdAt -products.updatedAt')
+        .populate({
+            path: 'products.product',
+            select: ['-createdAt', '-updatedAt', '-user', '-price', '-tax'],
+            // populate: {
+            //     path: 'store category subCategory',
+            //     select: ['-createdAt', '-updatedAt', '-user']
+            // }
+        });
+        res.json(data);
     } catch (err) {
         console.log(err);
         res.json({error: err});
@@ -154,9 +163,32 @@ async function newExpense (req, res) {
 }
 
 async function deleteExpense (req, res) {
+    console.log(req.params.prodId)
     try {
-        console.log(req.body);
-        res.json("delete expnse")
+        let products = await Expense.findById(req.params.id)
+        if (products) {
+            let prod = products.products.id(req.params.prodId);
+            prod.remove()
+            await products.save();
+        } else {
+            res.status(404).json({error: 'List not found'})
+        }
+        try {
+            const data = await Expense.findById(req.params.id)
+            .select('-createdAt -updatedAt -user -products.createdAt -products.updatedAt')
+            .populate({
+                path: 'products.product',
+                select: ['-createdAt', '-updatedAt', '-user', '-price', '-tax'],
+                populate: {
+                    path: 'store category subCategory',
+                    select: ['-createdAt', '-updatedAt', '-user']
+                }
+            });
+            res.json(data);
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({error: err})
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({error: err});

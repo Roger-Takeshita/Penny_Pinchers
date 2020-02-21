@@ -59,10 +59,9 @@ class ListPage extends Component {
 
     handleDeleteItem = async (listId, productId) => {
         try {
-            const data = await apiService.deleteProduct(`/api/list/${listId}/${productId}`)
-            this.props.history.push(`/list/${listId}`);
+            const data = await apiService.deleteExpense(`/api/list/${listId}/${productId}`)
             this.setState({message: '', data});
-            // this.props.history.push(`/api/list/${this.props.match.params.id}`);
+            this.props.history.push(`/list/${listId}`);
         } catch (err) {
             this.setState({message: err.message});
         }

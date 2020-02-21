@@ -59,7 +59,7 @@ class HomePage extends Component {
                 </Carousel>
                 <CardDeck className={styles.addPaddingCardDeck}>
                     <Card>
-                        <Card.Img variant="top" src="holder.js/100px160" />
+                        <Card.Img variant="top" src="/Icons_001.png" />
                         <Card.Body>
                         <Card.Title>My Lists</Card.Title>
                         <Card.Text>
@@ -67,12 +67,10 @@ class HomePage extends Component {
                             additional content. This content is a little bit longer.
                         </Card.Text>
                         </Card.Body>
-                        <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                        </Card.Footer>
+                        {/* <Card.Footer> */}
                     </Card>
                     <Card>
-                        <Card.Img variant="top" src="holder.js/100px160" />
+                        <Card.Img variant="top" src="/Icons_002.png" />
                         <Card.Body>
                         <Card.Title>New List</Card.Title>
                         <Card.Text>
@@ -80,12 +78,12 @@ class HomePage extends Component {
                             content.{' '}
                         </Card.Text>
                         </Card.Body>
-                        <Card.Footer>
+                        {/* <Card.Footer>
                         <small className="text-muted">Last updated 3 mins ago</small>
-                        </Card.Footer>
+                        </Card.Footer> */}
                     </Card>
                     <Card>
-                        <Card.Img variant="top" src="holder.js/100px160" />
+                        <Card.Img variant="top" src="/Icons_003.png" />
                         <Card.Body>
                         <Card.Title>Products Manager</Card.Title>
                         <Card.Text>
@@ -94,9 +92,9 @@ class HomePage extends Component {
                             show that equal height action.
                         </Card.Text>
                         </Card.Body>
-                        <Card.Footer>
+                        {/* <Card.Footer>
                         <small className="text-muted">Last updated 3 mins ago</small>
-                        </Card.Footer>
+                        </Card.Footer> */}
                     </Card>
                 </CardDeck>
             </div>
