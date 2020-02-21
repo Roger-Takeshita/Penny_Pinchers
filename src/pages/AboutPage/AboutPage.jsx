@@ -24,7 +24,7 @@ class AboutPage extends Component {
                                         <a href="https://www.instagram.com/roger.takeshita/" target="blank"><img src="/instagram.png" alt="instagram"/></a>&nbsp;&nbsp;&nbsp;
                                         <a href="https://www.youtube.com/channel/UCTA3Kd4KxeD6GnZCfLZbYaA" target="blank"><img src="/yt.png" alt="youtube"/></a>
                                     </div>
-                                    </div>
+                                </div>
                             </div>
                         </ListGroup.Item>
                     </ListGroup>

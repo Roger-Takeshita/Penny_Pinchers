@@ -98,6 +98,12 @@ footer img {
   padding-top: 30px;
 }
 
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+}
+
 .form-descri {
   padding-top: 20px;
   padding-bottom: 10px;

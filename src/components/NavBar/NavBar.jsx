@@ -54,7 +54,7 @@ const NavBar = (props) => {
     
     return (
         <Navbar bg="light" expand="lg" className={styles.NavBar1}>
-            <Navbar.Brand><Link to="/">Penny Pinchers</Link></Navbar.Brand>
+            <Navbar.Brand><Link to="/">Penny Pincher<img src="/logo.png" alt="logo" width="25px"/></Link></Navbar.Brand>
             {form}
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             {nav}
