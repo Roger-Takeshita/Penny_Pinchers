@@ -114,3 +114,18 @@ footer img {
 .form-title {
   color: rgb(6, 132, 250);
 }
+
+#profile {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15%;
+}
+
+#contact {
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
