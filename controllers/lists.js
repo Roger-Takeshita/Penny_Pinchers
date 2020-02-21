@@ -3,7 +3,7 @@ const Product = require ('../models/product');
 
 async function lists (req, res) {
     try {
-        const data = await Expense.find({'user.$id': req.body._id})
+        const data = await Expense.find({'user': req.body._id})
         .select('-createdAt -updatedAt -user -products.createdAt -products.updatedAt')
         .populate({
             path: 'products.product',
@@ -49,7 +49,7 @@ async function newList (req, res) {
 async function deleteList (req, res) {
     try {
         await Expense.findOneAndDelete({_id:req.params.id});
-        const lists = await Expense.find({'user.$id': req.body._id});
+        const lists = await Expense.find({'user': req.body._id});
         res.json(lists);
     } catch (err) {
         console.log(err);

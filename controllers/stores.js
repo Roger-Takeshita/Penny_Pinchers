@@ -2,7 +2,7 @@ const Store = require ('../models/store');
 
 async function stores (req, res) {
     try {
-        const stores = await Store.find({'user.$id': req.body._id}).select('name').sort({name: 1});
+        const stores = await Store.find({'user': req.body._id}).select('name').sort({name: 1});
         res.json(stores);
     } catch (err) {
         res.json(err);
@@ -19,7 +19,7 @@ async function newStore (req, res) {
             }
             await Store.create(newValue);
         }
-        const stores = await Store.find({'user.$id': req.body._id}).select('name').sort({name: 1});
+        const stores = await Store.find({'user': req.body._id}).select('name').sort({name: 1});
         res.json(stores);
     } catch (err) {
         res.json(err);
@@ -29,7 +29,7 @@ async function newStore (req, res) {
 async function deleteStore (req, res) {
     try {
         await Store.findOneAndDelete({_id:req.params.id});
-        const stores = await Store.find({'user.$id': req.body._id}).select('name').sort({name: 1});
+        const stores = await Store.find({'user': req.body._id}).select('name').sort({name: 1});
         res.json(stores);
     } catch (err) {
         res.json(err);

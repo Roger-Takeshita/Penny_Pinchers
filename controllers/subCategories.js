@@ -2,7 +2,7 @@ const SubCategory = require ('../models/subCategory');
 
 async function subCategories (req, res) {
     try {
-        const subCategories = await SubCategory.find({'user.$id': req.body._id}).select('name').sort({name: 1});
+        const subCategories = await SubCategory.find({'user': req.body._id}).select('name').sort({name: 1});
         res.json(subCategories);
     } catch (err) {
         res.json(err);
@@ -20,7 +20,7 @@ async function newSubCategory (req, res) {
             }
             await SubCategory.create(newValue);
         }
-        const subCategories = await SubCategory.find({'user.$id': req.body._id}).select('name').sort({name: 1});
+        const subCategories = await SubCategory.find({'user': req.body._id}).select('name').sort({name: 1});
         res.json(subCategories);
     } catch (err) {
         res.json(err);
@@ -30,7 +30,7 @@ async function newSubCategory (req, res) {
 async function deleteSubCategory (req, res) {
     try {
         await SubCategory.findOneAndDelete({_id:req.params.id});
-        const subCategories = await SubCategory.find({'user.$id': req.body._id}).select('name').sort({name: 1});
+        const subCategories = await SubCategory.find({'user': req.body._id}).select('name').sort({name: 1});
         res.json(subCategories);
     } catch (err) {
         res.json(err);
